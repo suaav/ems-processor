@@ -22,13 +22,6 @@ public class EmsProcessorApp {
             return;
         }
 
-        try {
-            EmsWebVisitor.doStuff();
-        } catch(Exception e) {
-            System.err.println("do stuff failed");
-            System.err.println(e);
-        }
-
         // ~~~ INPUT READING ~~~
         EmsInputParser inputParser = new EmsInputParser(inputFile);
         List<Event> events = inputParser.parse();
@@ -66,7 +59,7 @@ public class EmsProcessorApp {
     private static File checkOutputFile(String filePath) {
         File file = null;
         if (Strings.isNullOrEmpty(filePath) || !filePath.endsWith(".csv")) {
-            System.out.println("Input must be a valid .csv file");
+            System.out.println("Output must be a valid .csv file");
             System.out.println("usage: java EmsProcessorApp inputFileName outputFileName");
         }
         else {
